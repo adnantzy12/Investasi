@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Withdraw Investasi</title>
+</head>
+<body style="font-family: Arial, sans-serif; background:#f4f6f7; margin:0; padding:0;">
+
+  <!-- Header -->
+  <div style="background:#2c3e50; padding:20px; text-align:center; color:white;">
+    <h2>💸 Withdraw Investasi</h2>
+    <p>Minimal withdraw 60K</p>
+  </div>
+
+  <!-- Form Withdraw -->
+  <div style="max-width:500px; margin:30px auto; background:white; padding:25px; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+
+    <form action="withdraw_konfirmasi.html" method="post">
+
+      <label style="display:block; margin-bottom:8px; font-weight:bold;">Nominal Withdraw</label>
+      <input type="number" name="nominal" placeholder="Minimal 60000" required
+             style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #bdc3c7; border-radius:8px;">
+
+      <label style="display:block; margin-bottom:8px; font-weight:bold;">Metode Pencairan</label>
+      <select name="metode" required
+              style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #bdc3c7; border-radius:8px;">
+        <option value="">-- Pilih Metode --</option>
+        <option value="Dana">Dana</option>
+        <option value="OVO">OVO</option>
+        <option value="Gopay">Gopay</option>
+        <option value="Bank">Bank</option>
+      </select>
+
+      <label style="display:block; margin-bottom:8px; font-weight:bold;">Nomor / Rekening Tujuan</label>
+      <input type="text" name="tujuan" placeholder="Isi nomor HP / rekening" required
+             style="width:100%; padding:10px; margin-bottom:20px; border:1px solid #bdc3c7; border-radius:8px;">
+
+      <button type="submit" 
+              style="width:100%; background:#27ae60; color:white; padding:12px; border:none; border-radius:8px; font-size:16px; cursor:pointer;">
+        Kirim Permintaan Withdraw
+      </button>
+    </form>
+  </div>
+
+  <!-- Back -->
+  <div style="text-align:center; margin:30px;">
+    <a href="dashboard.html" style="background:#2980b9; color:white; padding:12px 18px; border-radius:8px; text-decoration:none;">⬅ Kembali ke Dashboard</a>
+  </div>
+
+</body>
+</html>

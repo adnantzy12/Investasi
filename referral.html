@@ -1,0 +1,65 @@
+<div style="max-width:900px; margin:20px auto; text-align:center;">
+  <a href="dashboard.html" 
+     style="display:inline-block; margin-bottom:20px; padding:12px 25px; background:#2980b9; color:white; text-decoration:none; border-radius:8px; font-weight:bold;">
+    🏠 Kembali ke Dashboard
+  </a>
+</div>
+
+<!-- Referral Card -->
+<div style="max-width:900px; margin:0 auto; background:white; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); text-align:center;">
+  <h3>🎯 Program Referral CWPay</h3>
+  <p style="line-height:1.6; color:#2c3e50;">
+    Bagikan kode referral kamu ke teman-teman!<br>
+    <b>Setiap teman yang diundang deposit minimal 100k akan mendapatkan bonus 35k</b>.<br>
+    Dan kamu juga akan mendapatkan bonus 35k untuk setiap referral yang melakukan deposit.
+  </p>
+  <div style="margin-top:15px;">
+    <input type="text" id="referralCode" readonly style="padding:12px; width:70%; border-radius:8px; border:1px solid #bdc3c7; font-weight:bold; text-align:center;">
+    <button style="margin-left:10px; padding:10px 18px; background:#27ae60; color:white; border:none; border-radius:8px; cursor:pointer;"
+            onclick="copyReferralCode()">
+      🚀 Salin Kode
+    </button>
+  </div>
+
+  <!-- Tombol share compact -->
+  <div style="margin-top:20px; display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
+    <button onclick="shareWA()" style="flex:1; min-width:80px; padding:10px; background:#25d366; color:white; border:none; border-radius:8px; cursor:pointer;">WA</button>
+    <button onclick="shareFB()" style="flex:1; min-width:80px; padding:10px; background:#3b5998; color:white; border:none; border-radius:8px; cursor:pointer;">FB</button>
+    <button onclick="shareTwitter()" style="flex:1; min-width:80px; padding:10px; background:#1da1f2; color:white; border:none; border-radius:8px; cursor:pointer;">Twitter</button>
+    <button onclick="shareLine()" style="flex:1; min-width:80px; padding:10px; background:#00c300; color:white; border:none; border-radius:8px; cursor:pointer;">Line</button>
+    <button onclick="shareTelegram()" style="flex:1; min-width:80px; padding:10px; background:#0088cc; color:white; border:none; border-radius:8px; cursor:pointer;">TG</button>
+  </div>
+</div>
+
+<script>
+const user = JSON.parse(localStorage.getItem("user"));
+document.getElementById("referralCode").value = user.referral_code;
+
+function copyReferralCode(){
+  const code = document.getElementById("referralCode").value;
+  navigator.clipboard.writeText(code);
+  alert("Kode referral disalin: " + code);
+}
+
+function shareWA(){
+  const text = `Gabung di CWPay dengan kode referral saya: ${user.referral_code}`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+}
+function shareFB(){
+  const url = `https://cwpay.example.com?ref=${user.referral_code}`;
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+}
+function shareTwitter(){
+  const text = `Gabung di CWPay dengan kode referral saya: ${user.referral_code}`;
+  const url = `https://cwpay.example.com`;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+}
+function shareLine(){
+  const text = `Gabung di CWPay dengan kode referral saya: ${user.referral_code}`;
+  window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(text)}`, '_blank');
+}
+function shareTelegram(){
+  const text = `Gabung di CWPay dengan kode referral saya: ${user.referral_code}`;
+  window.open(`https://t.me/share/url?url=${encodeURIComponent(text)}`, '_blank');
+}
+</script>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Profil & Keamanan</title>
+  <script>
+    function showSection(id) {
+      // sembunyikan semua section
+      document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+      // tampilkan section yg dipilih
+      document.getElementById(id).style.display = "block";
+    }
+
+    // generate referral
+    function generateReferral() {
+      let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let code = "CW";
+      for (let i = 0; i < 6; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById("referralCode").innerText = code;
+    }
+
+    // pas halaman pertama kali dibuka
+    window.onload = function() {
+      generateReferral();
+      showSection("profil"); // default buka profil
+    }
+  </script>
+</head>
+<body style="font-family: Arial, sans-serif; background:#f4f6f7; margin:0; padding:0;">
+
+  <!-- Header -->
+  <div style="background:#16a085; padding:20px; text-align:center; color:white;">
+    <h2>👤 Akun Saya</h2>
+    <p>Kelola profil, keamanan, dan informasi lainnya</p>
+  </div>
+
+  <!-- Container -->
+  <div style="display:flex; max-width:1000px; margin:20px auto; gap:20px;">
+
+    <!-- Menu vertikal -->
+    <div style="width:220px; background:white; border-radius:12px; padding:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <button onclick="showSection('profil')" style="display:block; width:100%; margin:8px 0; padding:10px; background:#2980b9; color:white; border:none; border-radius:8px; cursor:pointer;">👤 Profil</button>
+      <button onclick="showSection('keamanan')" style="display:block; width:100%; margin:8px 0; padding:10px; background:#e67e22; color:white; border:none; border-radius:8px; cursor:pointer;">🔑 Keamanan</button>
+      <button onclick="showSection('transaksi')" style="display:block; width:100%; margin:8px 0; padding:10px; background:#8e44ad; color:white; border:none; border-radius:8px; cursor:pointer;">🔒 Sandi Transaksi</button>
+      <button onclick="showSection('referral')" style="display:block; width:100%; margin:8px 0; padding:10px; background:#27ae60; color:white; border:none; border-radius:8px; cursor:pointer;">🎁 Referral</button>
+      <button onclick="showSection('tentang')" style="display:block; width:100%; margin:8px 0; padding:10px; background:#34495e; color:white; border:none; border-radius:8px; cursor:pointer;">ℹ️ Tentang Kami</button>
+      <a href="terms.html" style="display:block; width:100%; margin:8px 0; padding:10px; background:#16a085; color:white; border-radius:8px; text-decoration:none; text-align:center;">📜 S&K</a>
+    </div>
+
+    <!-- Konten -->
+    <div style="flex:1; background:white; padding:25px; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+
+      <!-- Profil -->
+      <div id="profil" class="section">
+        <h2>👤 Profil</h2>
+        <form>
+          <label>Nama Lengkap</label><br>
+          <input type="text" value="Nama User" style="width:100%; padding:10px; margin:8px 0;"><br>
+          <label>Email</label><br>
+          <input type="email" value="user@email.com" style="width:100%; padding:10px; margin:8px 0;"><br>
+          <button type="submit" style="background:#27ae60; color:white; padding:12px 20px; border:none; border-radius:8px; cursor:pointer;">💾 Simpan</button>
+        </form>
+      </div>
+
+      <!-- Keamanan -->
+      <div id="keamanan" class="section" style="display:none;">
+        <h2>🔑 Keamanan</h2>
+        <form>
+          <label>Password Lama</label><br>
+          <input type="password" style="width:100%; padding:10px; margin:8px 0;"><br>
+          <label>Password Baru</label><br>
+          <input type="password" style="width:100%; padding:10px; margin:8px 0;"><br>
+          <label>Konfirmasi Password Baru</label><br>
+          <input type="password" style="width:100%; padding:10px; margin:8px 0;"><br>
+          <button type="submit" style="background:#27ae60; color:white; padding:12px 20px; border:none; border-radius:8px; cursor:pointer;">🔒 Ubah Password</button>
+        </form>
+      </div>
+
+      <!-- Sandi Transaksi -->
+      <div id="transaksi" class="section" style="display:none;">
+        <h2>🔒 Kata Sandi Transaksi</h2>
+        <form>
+          <label>Buat / Ubah PIN (6 digit)</label><br>
+          <input type="password" maxlength="6" style="width:100%; padding:10px; margin:8px 0;" placeholder="******"><br>
+          <button type="submit" style="background:#8e44ad; color:white; padding:12px 20px; border:none; border-radius:8px; cursor:pointer;">💾 Simpan PIN</button>
+        </form>
+      </div>
+
+      <!-- Referral -->
+      <div id="referral" class="section" style="display:none; text-align:center;">
+        <h2>🎁 Referral</h2>
+        <p>Bagikan kode referral kamu untuk dapatkan bonus!</p>
+        <div id="referralCode" style="font-size:22px; font-weight:bold; background:#ecf0f1; padding:15px; border-radius:8px; margin:15px 0;">CWXXXXXX</div>
+        <button onclick="navigator.clipboard.writeText(document.getElementById('referralCode').innerText)" style="background:#27ae60; color:white; padding:10px 15px; border:none; border-radius:8px; cursor:pointer;">📋 Copy</button>
+      </div>
+
+      <!-- Tentang Kami -->
+      <div id="tentang" class="section" style="display:none;">
+        <h2>ℹ️ Tentang Kami</h2>
+        <p>CWPay adalah platform investasi digital modern yang menyediakan berbagai pilihan plan investasi dengan sistem yang mudah, cepat, dan transparan.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Logout -->
+  <div style="text-align:center; margin:20px;">
+    <a href="login.html" style="background:#c0392b; color:white; padding:12px 20px; border-radius:8px; text-decoration:none;">🚪 Logout</a>
+  </div>
+
+</body>
+</html>

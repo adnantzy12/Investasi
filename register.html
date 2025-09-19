@@ -1,0 +1,73 @@
+<div style="max-width:400px; margin:50px auto; background:white; padding:30px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1); font-family:Arial, sans-serif;">
+  <h2 style="text-align:center; color:#2c3e50;">📝 Registrasi CWPay</h2>
+  
+  <div style="margin-top:20px;">
+    <label>Username</label>
+    <input type="text" id="username" placeholder="Masukkan username" style="width:100%; padding:10px; margin-top:5px; border-radius:8px; border:1px solid #bdc3c7;">
+  </div>
+  
+  <div style="margin-top:15px;">
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Masukkan password" style="width:100%; padding:10px; margin-top:5px; border-radius:8px; border:1px solid #bdc3c7;">
+  </div>
+  
+  <!-- Kode Verifikasi -->
+  <div style="margin-top:15px; display:flex; align-items:center; gap:10px;">
+    <input type="text" id="userCode" placeholder="Masukkan kode verifikasi" style="flex:1; padding:10px; border-radius:8px; border:1px solid #bdc3c7;">
+    <div id="verifCode" style="padding:10px 15px; background:#ecf0f1; border-radius:8px; font-weight:bold; color:#27ae60; cursor:pointer;" onclick="generateCode()">
+      <!-- Kode acak muncul di sini -->
+    </div>
+  </div>
+  
+  <!-- Kode Referral (Optional) -->
+  <div style="margin-top:15px;">
+    <label>Kode Referral (Opsional)</label>
+    <input type="text" id="referralInput" placeholder="Masukkan kode teman jika ada" style="width:100%; padding:10px; border-radius:8px; border:1px solid #bdc3c7;">
+  </div>
+  
+  <button onclick="register()" style="width:100%; margin-top:20px; padding:12px; background:#27ae60; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">
+    Daftar
+  </button>
+</div>
+
+<script>
+let currentCode = "";
+
+function generateCode(length = 6) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let code = "";
+  for(let i=0; i<length; i++){
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  currentCode = code;
+  document.getElementById("verifCode").textContent = code;
+}
+
+// Generate kode verifikasi saat halaman load
+generateCode();
+
+function register() {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const userCode = document.getElementById("userCode").value.trim().toUpperCase();
+  const referralCode = document.getElementById("referralInput").value.trim().toUpperCase();
+
+  if(!username || !password || !userCode){
+    alert("Username, password, dan kode verifikasi wajib diisi!");
+    return;
+  }
+
+  if(userCode !== currentCode){
+    alert("Kode verifikasi salah! Silakan coba lagi.");
+    generateCode(); // refresh kode verifikasi
+    return;
+  }
+
+  // Simpan user baru (contoh localStorage)
+  const newUser = {username, password, referralCode: referralCode || null};
+  localStorage.setItem("user", JSON.stringify(newUser));
+
+  alert("Registrasi berhasil!");
+  window.location.href = "dashboard.html"; // redirect ke dashboard
+}
+</script>
