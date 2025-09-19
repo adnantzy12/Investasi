@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - CWPay</title>
+</head>
+<body style="font-family: Arial, sans-serif; background:#f4f6f7; margin:0; padding:0;">
+
+  <!-- Header -->
+  <div style="background:#2c3e50; padding:20px; text-align:center; color:white;">
+    <h2>📊 Dashboard CWPay</h2>
+    <p>Selamat datang di platform investasi modern</p>
+  </div>
+
+  <!-- Menu Cepat -->
+  <div style="max-width:900px; margin:20px auto; background:white; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); text-align:center;">
+    <h3>💼 Menu Cepat</h3>
+    <a href="plan.html" style="display:inline-block; margin:10px; background:#27ae60; color:white; padding:12px 20px; border-radius:8px; text-decoration:none;">📈 Plan Investasi</a>
+    <a href="topup.html" style="display:inline-block; margin:10px; background:#2980b9; color:white; padding:12px 20px; border-radius:8px; text-decoration:none;">💳 Top Up</a>
+    <a href="withdraw.html" style="display:inline-block; margin:10px; background:#e67e22; color:white; padding:12px 20px; border-radius:8px; text-decoration:none;">💸 Withdraw</a>
+    <a href="profile.html" style="display:inline-block; margin:10px; background:#8e44ad; color:white; padding:12px 20px; border-radius:8px; text-decoration:none;">👤 Profil</a>
+    <a href="history.html" style="display:inline-block; margin:10px; background:#16a085; color:white; padding:12px 20px; border-radius:8px; text-decoration:none;">📜 Riwayat Transaksi</a>
+  </div>
+
+  <!-- 📌 PLAN AKTIF -->
+  <div style="max-width:900px; margin:20px auto; background:#ffffff; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+    <h3>📌 Plan Aktif</h3>
+    <div id="planAktif">
+      <p style="color:#7f8c8d;">Belum ada plan aktif.</p>
+    </div>
+  </div>
+
+  <!-- Misi Undang Teman -->
+  <div style="max-width:900px; margin:20px auto; background:#ffffff; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); display:flex; align-items:center; gap:20px;">
+    <!-- Gambar modern 4D referral -->
+    <img src="https://img.icons8.com/external-3d-design-circle/512/external-Refer-friends-online-marketing-3d-design-circle.png" 
+         alt="Referral 4D" style="width:200px; max-width:100%;">
+
+    <!-- Isi misi -->
+    <div style="text-align:left;">
+      <h3>🎯 Misi Undang Teman</h3>
+      <p style="line-height:1.6; color:#2c3e50;">
+        Ajak <b>5 teman</b> untuk deposit minimal <b>100.000</b>.<br>
+        Setiap teman akan mendapatkan <b>bonus 100.000</b>,<br>
+        dan kamu juga akan mendapat <b>bonus 100.000</b> untuk setiap referral!
+      </p>
+      <a href="referral.html" style="display:inline-block; margin-top:10px; background:#27ae60; color:white; padding:10px 18px; border-radius:8px; text-decoration:none;">🚀 Ajak Sekarang</a>
+    </div>
+  </div>
+
+  <!-- Tentang CWPay -->
+  <div style="max-width:900px; margin:20px auto; background:white; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); text-align:center;">
+    <!-- Gambar ilustrasi 4D modern investasi -->
+    <img src="https://img.icons8.com/external-3d-design-pro/512/external-Investment-business-3d-design-pro.png" 
+         alt="Investasi 4D" style="max-width:280px; margin-bottom:20px;">
+
+    <!-- Keterangan -->
+    <h3>🌍 Tentang CWPay</h3>
+    <p style="line-height:1.7; color:#2c3e50;">
+      <b>CWPay</b> adalah platform investasi digital yang berdiri sejak tahun <b>2018</b> di <b>London, Inggris</b>.  
+      Sejak awal berdiri, CWPay berkomitmen memberikan layanan investasi yang aman, transparan, dan menguntungkan bagi semua pengguna.  
+    </p>
+    <p style="line-height:1.7; color:#2c3e50;">
+      CWPay hadir di Indonesia untuk memberikan pengalaman investasi terbaik dengan berbagai pilihan plan yang terjangkau, proses cepat, serta dukungan Customer Service 24 jam.  
+      Kami beroperasi sesuai standar <b>legalitas internasional</b> dan dalam pengawasan <b>Otoritas Jasa Keuangan (OJK)</b>.  
+    </p>
+    <div style="margin-top:15px; background:#ecf0f1; padding:15px; border-radius:8px; text-align:center; font-weight:bold; color:#27ae60;">
+      ✅ Investasi Aman • Terpercaya • Global
+    </div>
+  </div>
+
+  <!-- Footer Global -->
+  <footer style="margin-top:30px; background:#34495e; color:white; padding:15px; text-align:center; font-size:14px;">
+    <a href="dashboard.html" style="color:white; text-decoration:none; margin:0 10px;">🏠 Dashboard</a> |
+    <a href="profile.html" style="color:white; text-decoration:none; margin:0 10px;">👤 Profil</a> |
+    <a href="terms.html" style="color:white; text-decoration:none; margin:0 10px;">📜 S&K</a> |
+    <a href="https://wa.me/6283898331732" style="color:white; text-decoration:none; margin:0 10px;">📱 CS</a>
+    <br><br>
+    <span>© 2018 - 2025 CWPay Ltd • London - Jakarta</span>
+  </footer>
+
+  <!-- Script Plan Aktif -->
+  <script>
+    // Cek jika ada plan yang disimpan setelah beli
+    const savedPlans = JSON.parse(localStorage.getItem("plans") || "[]");
+    const planAktifDiv = document.getElementById("planAktif");
+
+    if(savedPlans.length > 0){
+      planAktifDiv.innerHTML = "";
+      savedPlans.forEach(plan => {
+        const div = document.createElement("div");
+        div.style.border = "1px solid #ddd";
+        div.style.margin = "8px 0";
+        div.style.padding = "10px";
+        div.style.borderRadius = "8px";
+        div.style.background = "#f9f9f9";
+        div.innerHTML = `<b>${plan.nama}</b><br>
+          Durasi: ${plan.durasi} hari<br>
+          Profit Harian: Rp${plan.profit}<br>
+          Mulai: ${plan.mulai}`;
+        planAktifDiv.appendChild(div);
+      });
+    }
+  </script>
+
+</body>
+</html>
