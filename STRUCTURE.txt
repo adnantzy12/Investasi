@@ -1,0 +1,111 @@
+📁 STRUKTUR PROJECT CWPAY WHATSAPP BOT
+═══════════════════════════════════════════════════════════════
+
+cwpay-whatsapp-bot/
+│
+├── 📄 server.js                    # Backend server & WhatsApp bot logic
+├── 📄 package.json                 # NPM dependencies & scripts
+├── 📄 package-lock.json            # (auto-generated setelah npm install)
+│
+├── 🌐 HALAMAN WEB
+│   ├── index.html                  # Landing page
+│   ├── login.html                  # Halaman login
+│   ├── register.html               # Halaman registrasi
+│   ├── dashboard.html              # Dashboard user (updated)
+│   ├── bot-admin.html              # ⭐ Dashboard admin bot (BARU)
+│   ├── plan.html                   # Paket investasi
+│   ├── topup.html                  # Top up saldo
+│   ├── withdraw.html               # Penarikan dana
+│   ├── withdraw_konfirmasi.html    # Konfirmasi withdraw
+│   ├── konfirmasi.html             # Konfirmasi umum
+│   ├── profil.html                 # Profil user
+│   ├── referral.html               # Referral program
+│   ├── riwayat.html                # Riwayat transaksi
+│   └── terms.html                  # Syarat & ketentuan
+│
+├── 📚 DOKUMENTASI
+│   ├── README.md                   # Dokumentasi lengkap
+│   ├── SETUP_GUIDE.md              # Panduan setup detail
+│   ├── QUICK_START.txt             # Quick start guide
+│   └── STRUCTURE.txt               # File ini
+│
+├── ⚙️  KONFIGURASI
+│   ├── .env.example                # Template environment variables
+│   ├── .env                        # (buat sendiri dari .env.example)
+│   ├── .gitignore                  # Git ignore rules
+│   └── start.sh                    # Quick start script
+│
+├── 💾 DATA (auto-generated)
+│   ├── database.json               # Database lokal (auto-created)
+│   └── whatsapp-session/           # WhatsApp session data (auto-created)
+│       └── (jangan dihapus!)
+│
+└── 📦 DEPENDENCIES (auto-generated)
+    └── node_modules/               # NPM packages (auto-created)
+
+
+═══════════════════════════════════════════════════════════════
+
+🔑 FILE PENTING:
+
+1. server.js
+   - Backend server Express.js
+   - WhatsApp bot logic dengan whatsapp-web.js
+   - API endpoints untuk auth & bot management
+   - Socket.IO untuk real-time QR code
+
+2. bot-admin.html
+   - Dashboard untuk scan QR code
+   - Real-time status monitoring
+   - Kontrol bot (restart, disconnect)
+   - Socket.IO client untuk terima QR code
+
+3. package.json
+   - Dependencies: express, whatsapp-web.js, socket.io, dll
+   - Scripts: npm start, npm run dev
+
+4. database.json (auto-generated)
+   - Menyimpan data users, transactions, settings
+   - Untuk production, ganti dengan database real
+
+5. whatsapp-session/ (auto-generated)
+   - Menyimpan session WhatsApp
+   - Agar tidak perlu scan QR setiap restart
+   - JANGAN DIHAPUS! Backup secara berkala
+
+
+═══════════════════════════════════════════════════════════════
+
+🚀 FLOW KERJA:
+
+1. User jalankan: npm start
+2. Server berjalan di port 3000
+3. WhatsApp client initialize
+4. QR code di-generate
+5. QR code dikirim via Socket.IO ke bot-admin.html
+6. Admin scan QR code dari WhatsApp
+7. Bot terhubung & siap menerima pesan
+8. Session tersimpan di whatsapp-session/
+9. Restart server → bot langsung connect (tidak perlu scan lagi)
+
+
+═══════════════════════════════════════════════════════════════
+
+📊 TEKNOLOGI YANG DIGUNAKAN:
+
+Backend:
+  • Node.js + Express.js
+  • whatsapp-web.js (WhatsApp Web API)
+  • Socket.IO (real-time communication)
+  • Puppeteer (headless browser untuk WhatsApp Web)
+  • bcryptjs (password hashing)
+  • jsonwebtoken (JWT authentication)
+
+Frontend:
+  • HTML5 + CSS3
+  • Vanilla JavaScript
+  • Socket.IO Client
+  • Responsive design
+
+
+═══════════════════════════════════════════════════════════════

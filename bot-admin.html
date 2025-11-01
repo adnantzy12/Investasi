@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Bot WhatsApp - CWPay</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 100%;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      color: #7f8c8d;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .status-disconnected {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .status-connecting {
+      background: #f39c12;
+      color: white;
+    }
+
+    .status-connected {
+      background: #27ae60;
+      color: white;
+    }
+
+    .qr-container {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 30px;
+      margin: 20px 0;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #qrCode {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      border: 3px solid #667eea;
+      border-radius: 10px;
+      padding: 10px;
+      background: white;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .instructions {
+      background: #e8f4f8;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 20px 0;
+      text-align: left;
+      border-radius: 5px;
+    }
+
+    .instructions h3 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .instructions ol {
+      margin-left: 20px;
+      color: #34495e;
+      line-height: 1.8;
+    }
+
+    .btn {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 10px 5px;
+    }
+
+    .btn:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-danger {
+      background: #e74c3c;
+    }
+
+    .btn-danger:hover {
+      background: #c0392b;
+    }
+
+    .message {
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      font-weight: 500;
+    }
+
+    .message-success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message-error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .message-info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    .footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #ecf0f1;
+      color: #7f8c8d;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .bot-info {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+    }
+
+    .bot-info p {
+      margin: 8px 0;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🤖 Admin Bot WhatsApp</h1>
+    <p class="subtitle">CWPay - Kelola Bot WhatsApp Anda</p>
+
+    <!-- Status Badge -->
+    <div id="statusBadge" class="status-badge status-disconnected">
+      ⚫ Terputus
+    </div>
+
+    <!-- Message Area -->
+    <div id="messageArea"></div>
+
+    <!-- QR Code Container -->
+    <div class="qr-container" id="qrContainer">
+      <div class="loading"></div>
+      <p style="margin-top: 15px; color: #7f8c8d;">Menunggu QR Code...</p>
+    </div>
+
+    <!-- Instructions -->
+    <div class="instructions">
+      <h3>📱 Cara Menghubungkan Bot:</h3>
+      <ol>
+        <li>Buka WhatsApp di ponsel Anda</li>
+        <li>Tap <strong>Menu (⋮)</strong> atau <strong>Settings</strong></li>
+        <li>Pilih <strong>Linked Devices</strong></li>
+        <li>Tap <strong>Link a Device</strong></li>
+        <li>Scan QR Code yang muncul di atas</li>
+      </ol>
+    </div>
+
+    <!-- Bot Info (hidden by default) -->
+    <div id="botInfo" class="bot-info hidden">
+      <h3>✅ Bot Terhubung!</h3>
+      <p><strong>Status:</strong> Aktif dan siap menerima pesan</p>
+      <p><strong>Nomor:</strong> <span id="botNumber">-</span></p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div style="margin-top: 20px;">
+      <button class="btn" onclick="restartBot()">🔄 Restart Bot</button>
+      <button class="btn btn-danger" onclick="disconnectBot()">❌ Putuskan Koneksi</button>
+    </div>
+
+    <div style="margin-top: 15px;">
+      <button class="btn" onclick="window.location.href='dashboard.html'">🏠 Kembali ke Dashboard</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>© 2025 CWPay Ltd • <a href="terms.html">Syarat & Ketentuan</a></p>
+      <p>Butuh bantuan? <a href="https://wa.me/6283898331732">Hubungi CS</a></p>
+    </div>
+  </div>
+
+  <!-- Socket.IO -->
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+
+  <script>
+    const socket = io('http://localhost:3000');
+    const qrContainer = document.getElementById('qrContainer');
+    const statusBadge = document.getElementById('statusBadge');
+    const messageArea = document.getElementById('messageArea');
+    const botInfo = document.getElementById('botInfo');
+
+    // Show message
+    function showMessage(text, type = 'info') {
+      messageArea.innerHTML = `<div class="message message-${type}">${text}</div>`;
+      setTimeout(() => {
+        messageArea.innerHTML = '';
+      }, 5000);
+    }
+
+    // Update status badge
+    function updateStatus(status, text) {
+      statusBadge.className = `status-badge status-${status}`;
+      statusBadge.innerHTML = text;
+    }
+
+    // Socket: QR Code received
+    socket.on('qr', (qrData) => {
+      console.log('QR Code received');
+      updateStatus('connecting', '🟡 Menunggu Scan');
+      qrContainer.innerHTML = `
+        <img id="qrCode" src="${qrData}" alt="QR Code">
+        <p style="margin-top: 15px; color: #27ae60; font-weight: bold;">
+          ✅ QR Code siap! Silakan scan dengan WhatsApp Anda
+        </p>
+      `;
+      showMessage('QR Code berhasil dimuat! Silakan scan dengan WhatsApp.', 'success');
+    });
+
+    // Socket: Authenticated
+    socket.on('authenticated', (data) => {
+      console.log('Authenticated:', data);
+      updateStatus('connecting', '🟡 Autentikasi Berhasil');
+      qrContainer.innerHTML = `
+        <div class="loading"></div>
+        <p style="margin-top: 15px; color: #f39c12;">Menghubungkan bot...</p>
+      `;
+      showMessage(data.message, 'success');
+    });
+
+    // Socket: Ready
+    socket.on('ready', (data) => {
+      console.log('Bot ready:', data);
+      updateStatus('connected', '🟢 Terhubung');
+      qrContainer.innerHTML = `
+        <div style="font-size: 80px;">✅</div>
+        <h2 style="color: #27ae60; margin-top: 20px;">Bot Terhubung!</h2>
+        <p style="color: #7f8c8d; margin-top: 10px;">Bot WhatsApp siap menerima pesan</p>
+      `;
+      botInfo.classList.remove('hidden');
+      showMessage(data.message, 'success');
+    });
+
+    // Socket: Disconnected
+    socket.on('disconnected', (data) => {
+      console.log('Bot disconnected:', data);
+      updateStatus('disconnected', '⚫ Terputus');
+      qrContainer.innerHTML = `
+        <div style="font-size: 60px;">❌</div>
+        <p style="margin-top: 15px; color: #e74c3c; font-weight: bold;">
+          Bot terputus dari WhatsApp
+        </p>
+        <p style="color: #7f8c8d; margin-top: 10px;">
+          ${data.reason || 'Koneksi terputus'}
+        </p>
+      `;
+      botInfo.classList.add('hidden');
+      showMessage(`Bot terputus: ${data.reason}`, 'error');
+    });
+
+    // Socket: Connection error
+    socket.on('connect_error', (error) => {
+      console.error('Socket connection error:', error);
+      showMessage('Gagal terhubung ke server. Pastikan server berjalan.', 'error');
+    });
+
+    // Check initial status
+    fetch('http://localhost:3000/api/bot/status')
+      .then(res => res.json())
+      .then(data => {
+        if (data.connected) {
+          updateStatus('connected', '🟢 Terhubung');
+          qrContainer.innerHTML = `
+            <div style="font-size: 80px;">✅</div>
+            <h2 style="color: #27ae60; margin-top: 20px;">Bot Terhubung!</h2>
+            <p style="color: #7f8c8d; margin-top: 10px;">Bot WhatsApp siap menerima pesan</p>
+          `;
+          botInfo.classList.remove('hidden');
+        } else if (data.qrCode) {
+          updateStatus('connecting', '🟡 Menunggu Scan');
+          qrContainer.innerHTML = `
+            <img id="qrCode" src="${data.qrCode}" alt="QR Code">
+            <p style="margin-top: 15px; color: #27ae60; font-weight: bold;">
+              ✅ QR Code siap! Silakan scan dengan WhatsApp Anda
+            </p>
+          `;
+        }
+      })
+      .catch(err => {
+        console.error('Error checking status:', err);
+        showMessage('Gagal mengecek status bot. Pastikan server berjalan.', 'error');
+      });
+
+    // Restart bot
+    function restartBot() {
+      if (!confirm('Yakin ingin restart bot? Bot akan terputus sementara.')) {
+        return;
+      }
+
+      showMessage('Restarting bot...', 'info');
+      updateStatus('connecting', '🟡 Restarting...');
+      qrContainer.innerHTML = `
+        <div class="loading"></div>
+        <p style="margin-top: 15px; color: #7f8c8d;">Restarting bot...</p>
+      `;
+
+      fetch('http://localhost:3000/api/bot/restart', {
+        method: 'POST'
+      })
+      .then(res => res.json())
+      .then(data => {
+        showMessage(data.msg, 'success');
+      })
+      .catch(err => {
+        console.error('Error restarting bot:', err);
+        showMessage('Gagal restart bot', 'error');
+      });
+    }
+
+    // Disconnect bot
+    function disconnectBot() {
+      if (!confirm('Yakin ingin memutuskan koneksi bot? Anda perlu scan QR lagi nanti.')) {
+        return;
+      }
+
+      showMessage('Memutuskan koneksi...', 'info');
+      // Implement disconnect logic here
+      alert('Fitur disconnect akan segera tersedia. Untuk sementara, restart server untuk disconnect.');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║     🤖 CWPAY WHATSAPP BOT - QUICK START GUIDE 🤖            ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+📋 YANG SUDAH DIBUAT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ server.js              - Backend server & WhatsApp bot
+✅ bot-admin.html         - Dashboard admin untuk scan QR code
+✅ package.json           - Dependencies configuration
+✅ README.md              - Dokumentasi lengkap
+✅ SETUP_GUIDE.md         - Panduan setup detail
+✅ .gitignore             - Git ignore configuration
+✅ .env.example           - Environment variables template
+✅ start.sh               - Quick start script
+✅ dashboard.html         - Updated dengan link ke bot admin
+
+
+🚀 CARA MENJALANKAN (3 LANGKAH MUDAH):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  INSTALL DEPENDENCIES
+    
+    npm install
+
+
+2️⃣  JALANKAN SERVER
+    
+    npm start
+    
+    (Server akan berjalan di http://localhost:3000)
+
+
+3️⃣  BUKA HALAMAN ADMIN & SCAN QR
+    
+    • Buka browser: http://localhost:3000/bot-admin.html
+    • Tunggu QR Code muncul
+    • Buka WhatsApp di HP → Menu → Linked Devices
+    • Tap "Link a Device" → Scan QR Code
+    • Selesai! Bot siap digunakan ✅
+
+
+📱 CARA SCAN QR CODE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Android:
+  WhatsApp → ⋮ (Menu) → Linked Devices → Link a Device → Scan
+
+iPhone:
+  WhatsApp → Settings → Linked Devices → Link a Device → Scan
+
+
+🧪 TEST BOT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Setelah bot terhubung, kirim pesan dari WhatsApp lain:
+
+  /start    → Tampilkan menu
+  /plan     → Lihat paket investasi
+  /help     → Bantuan
+
+
+💡 FITUR BOT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ QR Code Authentication
+✅ Auto-reply pesan WhatsApp
+✅ Menu interaktif (/start, /plan, /help, dll)
+✅ Dashboard admin real-time
+✅ Session persistence (tidak perlu scan ulang setiap restart)
+✅ Status monitoring
+
+
+📂 AKSES HALAMAN:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🤖 Bot Admin:     http://localhost:3000/bot-admin.html
+🏠 Dashboard:     http://localhost:3000/dashboard.html
+📝 Login:         http://localhost:3000/login.html
+📋 Register:      http://localhost:3000/register.html
+
+
+⚠️  PENTING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Jangan hapus folder whatsapp-session/ (session tersimpan di sini)
+• Backup folder whatsapp-session/ secara berkala
+• Untuk production, ubah JWT_SECRET di server.js
+• Gunakan database real (bukan JSON) untuk production
+
+
+📞 BUTUH BANTUAN?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📱 WhatsApp: +62 838-9833-1732
+📧 Email: support@cwpay.com
+
+
+═══════════════════════════════════════════════════════════════
+
+         Dibuat dengan ❤️  untuk CWPay
+         © 2025 CWPay Ltd. All rights reserved.
+
+═══════════════════════════════════════════════════════════════

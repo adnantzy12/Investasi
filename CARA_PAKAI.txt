@@ -1,0 +1,185 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║          🤖 CARA PAKAI BOT WHATSAPP CWPAY (SUPER MUDAH!) 🤖         ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  STEP 1: INSTALL & JALANKAN                                          │
+└──────────────────────────────────────────────────────────────────────┘
+
+Buka terminal/command prompt, lalu ketik:
+
+    npm install
+
+Tunggu sampai selesai, lalu jalankan:
+
+    npm start
+
+Atau pakai script otomatis:
+
+    chmod +x start.sh
+    ./start.sh
+
+✅ Kalau berhasil, akan muncul:
+   🚀 Server running on http://localhost:3000
+   📱 Initializing WhatsApp Bot...
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  STEP 2: BUKA HALAMAN ADMIN BOT                                      │
+└──────────────────────────────────────────────────────────────────────┘
+
+Buka browser (Chrome/Firefox/Edge), ketik di address bar:
+
+    http://localhost:3000/bot-admin.html
+
+Tunggu beberapa detik...
+
+✅ QR Code akan muncul di layar!
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  STEP 3: SCAN QR CODE DARI WHATSAPP                                  │
+└──────────────────────────────────────────────────────────────────────┘
+
+📱 DI ANDROID:
+   1. Buka WhatsApp
+   2. Tap titik tiga (⋮) di pojok kanan atas
+   3. Pilih "Linked Devices" (Perangkat Tertaut)
+   4. Tap "Link a Device" (Tautkan Perangkat)
+   5. Scan QR Code di layar komputer
+
+📱 DI IPHONE:
+   1. Buka WhatsApp
+   2. Tap "Settings" di pojok kanan bawah
+   3. Tap "Linked Devices" (Perangkat Tertaut)
+   4. Tap "Link a Device" (Tautkan Perangkat)
+   5. Scan QR Code di layar komputer
+
+✅ Kalau berhasil:
+   • Status badge jadi 🟢 Terhubung
+   • Muncul centang hijau besar ✅
+   • Pesan: "Bot Terhubung!"
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  STEP 4: TEST BOT                                                    │
+└──────────────────────────────────────────────────────────────────────┘
+
+Dari WhatsApp lain (atau minta teman), kirim pesan ke nomor WhatsApp
+yang baru di-scan tadi:
+
+    /start
+
+Bot akan balas otomatis dengan menu:
+
+    🌟 Selamat datang di CWPay Bot!
+    
+    Pilih menu berikut:
+    1️⃣ /daftar - Daftar akun baru
+    2️⃣ /login - Login ke akun
+    3️⃣ /plan - Lihat paket investasi
+    4️⃣ /saldo - Cek saldo
+    5️⃣ /topup - Top up saldo
+    6️⃣ /withdraw - Tarik dana
+    7️⃣ /referral - Kode referral
+    8️⃣ /help - Bantuan
+    
+    💼 CWPay - Investasi Digital Terpercaya
+
+✅ Kalau bot balas, berarti BERHASIL! 🎉
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  COMMAND BOT YANG TERSEDIA                                           │
+└──────────────────────────────────────────────────────────────────────┘
+
+/start    → Tampilkan menu utama
+/menu     → Tampilkan menu utama
+/daftar   → Panduan pendaftaran
+/plan     → Lihat paket investasi
+/saldo    → Cek saldo (coming soon)
+/topup    → Panduan top up
+/withdraw → Panduan penarikan dana
+/referral → Info kode referral
+/help     → Bantuan & kontak CS
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  FITUR KEREN BOT INI                                                 │
+└──────────────────────────────────────────────────────────────────────┘
+
+✅ Auto-reply pesan WhatsApp
+✅ Menu interaktif
+✅ Dashboard admin real-time
+✅ QR Code authentication
+✅ Session persistence (tidak perlu scan ulang setiap restart!)
+✅ Status monitoring
+✅ Mudah dikustomisasi
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  KALAU BOT TERPUTUS / ERROR                                          │
+└──────────────────────────────────────────────────────────────────────┘
+
+1. Buka: http://localhost:3000/bot-admin.html
+2. Klik tombol "🔄 Restart Bot"
+3. Tunggu QR Code muncul (kalau session expired)
+4. Scan ulang kalau perlu
+
+ATAU
+
+Restart server:
+   Ctrl+C (stop server)
+   npm start (jalankan lagi)
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  TIPS PENTING                                                        │
+└──────────────────────────────────────────────────────────────────────┘
+
+⚠️  JANGAN hapus folder whatsapp-session/
+    (Session WhatsApp tersimpan di sini)
+
+⚠️  JANGAN logout WhatsApp Web dari ponsel
+    (Bot akan terputus)
+
+✅  Backup folder whatsapp-session/ secara berkala
+
+✅  Koneksi internet harus stabil
+
+✅  Setelah scan pertama kali, restart server tidak perlu scan lagi!
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  AKSES HALAMAN LAIN                                                  │
+└──────────────────────────────────────────────────────────────────────┘
+
+🤖 Bot Admin:     http://localhost:3000/bot-admin.html
+🏠 Dashboard:     http://localhost:3000/dashboard.html
+📝 Login:         http://localhost:3000/login.html
+📋 Register:      http://localhost:3000/register.html
+📊 Plan:          http://localhost:3000/plan.html
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  BUTUH BANTUAN?                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+
+📱 WhatsApp CS: +62 838-9833-1732
+📧 Email: support@cwpay.com
+
+Baca dokumentasi lengkap:
+📖 README.md
+📖 SETUP_GUIDE.md
+
+
+═══════════════════════════════════════════════════════════════════════
+
+                    SELAMAT MENGGUNAKAN! 🎉
+                    
+         Bot WhatsApp CWPay siap membantu user Anda!
+
+═══════════════════════════════════════════════════════════════════════
